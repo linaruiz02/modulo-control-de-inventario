@@ -1,0 +1,30 @@
+.head{
+    background: linear-gradient(#6957ddd5, #b8b5ffce, #ffffffbb);
+    box-shadow: 0 5px 30px   rgba(0, 0, 0, 0.13);
+    border-radius: 0 0 20px 20px;
+    position: absolute !important;
+    width: 100% !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: -1;
+
+}
+h3{
+    margin-top: -15% !important;
+    margin-left: 15%;
+}
+    
+.icon{
+    color: white;
+    height: 28px;
+    margin-left: -5%;
+    margin-top: -10%;
+    
+}
+img {
+    height: 50px;
+   margin-top: -25%;
+  
+}

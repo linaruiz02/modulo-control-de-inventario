@@ -1,0 +1,71 @@
+.form-label {
+    margin-bottom: 0.5rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+  
+}
+.form-control {
+    display: block;
+    border: 1px solid #b8b5ff !important;
+    border-radius: 10 rem !important;
+    color: #0f093f;
+    margin-bottom: 25px;
+    margin-right: 5px;
+    padding: 0.375rem 0.75rem;
+    width: 90% !important;
+}
+
+.form-control:focus {
+    color: #0f093f;
+    background-color: #fff;
+    border-color: #b8b5ff !important;
+    box-shadow: 0px 0px 35px rgba(184, 181, 255, 0.27) !important;
+}
+
+.form-select {
+    display: block;
+    background-color:  white!important;
+    border: 1px solid #b8b5ff !important;
+    color: #0f093f!important;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    /* width: 44% !important; */
+    font-family: 'Nunito' !important;
+}
+.inputCustom {
+   width: 44% !important; 
+}
+
+.inputCustom:focus{
+    box-shadow: 0px 0px 30px #b8b5ff46 !important;
+   
+}
+
+.buttong {
+    background-color: white !important;
+    margin-right: 100px;
+    margin-left: 0px;
+    margin-top: 35px;
+    box-shadow: 0px 0px 30px #b8b5ff46 !important;
+    font-family: 'Nunito' !important;
+    font-weight: bold !important;
+    height: 45px;
+    width: 100px;
+    box-shadow: 0px 0px 30px #b8b5ff46 !important;
+    background-color: white !important;
+    color: #6857dd !important;
+    border-color: #b8b5ff !important;
+}
+
+
+.buttong:hover{
+    background-color: #b8b5ff !important;
+}
+.option{
+    color: #0f093f;
+    font-family: 'Nunito' !important;
+    border-color: #6857dd !important;
+}
+
+.option:hover{
+    background-color: #b8b5ff !important;
+}

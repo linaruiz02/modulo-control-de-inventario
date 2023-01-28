@@ -1,0 +1,59 @@
+.sidebar{
+    width: 300px !important;
+}
+.offcanvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+.cardimage{
+    box-shadow: 0 5px 30px  rgba(0, 0, 0, 0.13);
+    border: 1px solid #b8b5ffc9;
+    border-radius: 8px;
+    margin-left: 15% !important;
+    margin-top: 8%;
+    height: 60px;
+}
+.sidebarCard{
+    margin-top: 10%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px  rgba(0, 0, 0, 0.13);
+    height: 85%;
+    border: 1px solid #b8b5ffc9;
+}
+.imgLogo{
+    margin-top: 4%;
+    align-content: center;
+}
+li{
+    margin-top: 7px;
+    font-weight:bold;
+    list-style: none;
+    font-family: 'Nunito';
+    
+}
+hr{
+    color: #6857dd !important;
+    margin-top: 15% !important;
+}
+
+.click{
+    margin-top: 4%;
+    background-color: #b8b5ff52;
+    border-radius: 10px;
+    height: 38px;
+    color: #6857dd;
+    box-shadow: 0 5px 30px  rgba(0, 0, 0, 0.10);
+
+}
+.buttonsidebar{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    width: 50px !important;
+    height: 40px !important;
+    margin-left: 0% !important;
+    margin-top: -3% !important;
+   
+}
+
