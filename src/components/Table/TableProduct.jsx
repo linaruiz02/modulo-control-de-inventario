@@ -41,8 +41,10 @@ function TableProduct () {
                 {dato.estado}
               </td>
             </tr>
-          )):
-            <p>¡No existen productos!</p>}
+          )): (
+            <tr><td colSpan={5}>¡No existen productos!</td></tr>
+          )
+          }
           
         </tbody>
       </Table>

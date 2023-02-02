@@ -43,7 +43,7 @@ function FormEntrada () {
             </option>
             {ordenes !== null && ordenes.map(orden=>(
               orden.estado === 'Activo' &&
-              <option key={orden.id} className='option'>
+              <option key={orden.orden} className='option'>
                 {orden.orden}
               </option>
             ))} 
@@ -61,7 +61,7 @@ function FormEntrada () {
             Selecciona un producto
             </option>
             {productos !== null && productos.map(producto=>(
-              <option key={producto.id} className='option'>
+              <option key={producto.codigo} className='option'>
                 {producto.nombre}
               </option>
             ))} 
@@ -81,7 +81,7 @@ function FormEntrada () {
             Selecciona una categoría
             </option>
             {categorias !== null && categorias.map(categoria=>(
-              <option key={categoria.id} className='option'>
+              <option key={categoria.nombre} className='option'>
                 {categoria.nombre}
               </option>
             ))}

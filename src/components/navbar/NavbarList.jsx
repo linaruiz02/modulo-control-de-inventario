@@ -23,8 +23,8 @@ function NavbarList ({title, classIcon}) {
 }
 
 NavbarList.propTypes = {
-  title: PropTypes.string.isRequired,
-  classIcon: PropTypes.string.isRequired
+  title: PropTypes.string,
+  classIcon: PropTypes.string
 }
 
 export default NavbarList;

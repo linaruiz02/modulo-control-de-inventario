@@ -10,8 +10,8 @@ import Sidebar from '../sidebar/Sidebar';
 function Layout() {
   const location = useLocation();
   
-  const [title, setTitle] = useState();
-  const [icon, setIcon] = useState();
+  const [title, setTitle] = useState('');
+  const [icon, setIcon] = useState('');
 
   useEffect(() =>{
     //definimos el objeto = encuentreme el objeto del array que tenga la ruta identica a el path

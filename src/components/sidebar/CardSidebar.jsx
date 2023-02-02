@@ -11,7 +11,7 @@ function CardSidebar({children, nameClass}) {
   );
 }
 CardSidebar.propTypes = {
-  children:PropTypes.node.isRequired,
-  nameClass:PropTypes.string.isRequired
+  children:PropTypes.node,
+  nameClass:PropTypes.string
 }
 export default CardSidebar;
