@@ -25,7 +25,7 @@ function DetailProduct () {
         </thead>
         <tbody>
           {entradas.map(entrada => (
-            <tr key={entrada.id}>
+            <tr key={entrada.orden}>
               <td>
                 {entrada.orden}
               </td>  
