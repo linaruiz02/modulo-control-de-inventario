@@ -24,7 +24,7 @@ function DetailProduct () {
           </tr>
         </thead>
         <tbody>
-          {entradas.map(entrada => (
+          { entradas !== null ? entradas.map(entrada => (
             <tr key={entrada.orden}>
               <td>
                 {entrada.orden}
@@ -48,8 +48,10 @@ function DetailProduct () {
                 {entrada.descripcion}
               </td>
             </tr>
-          ))}
-          
+          )): (
+            <tr><td colSpan={7}>¡No existen entradas!</td></tr>
+          )
+          }
         </tbody>
       </Table>
    

@@ -26,7 +26,7 @@ function Sidebar() {
               <Link to={'/'}>
                 <img
                   className="imgLogo"
-                  src="/public/images/LogoInventarionuevo.png"
+                  src="/images/LogoInventarionuevo.png"
                   alt="React Bootstrap logo"
                 />
               </Link>
