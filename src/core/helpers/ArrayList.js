@@ -5,7 +5,7 @@ export const arrayList = [
     estado: true,
     icono: 'bi bi-grid-fill',
     ruta: '/modulo-control-de-inventario/lista',
-    rutaDefecto: '/modulo-control-de-inventario'
+    rutaDefecto: '/modulo-control-de-inventario/'
   },
   {
     id: 2,
