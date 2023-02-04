@@ -13,7 +13,7 @@ function NavbarList ({title, classIcon}) {
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
           <Nav>
-            <img src="./modulo-control-de-inventario/images/LogoInventarionuevo.png"alt="React Bootstrap logo"/>
+            <img src="./images/LogoInventarionuevo.png"alt="React Bootstrap logo"/>
           </Nav>
         </Navbar.Collapse>
       </Container>
