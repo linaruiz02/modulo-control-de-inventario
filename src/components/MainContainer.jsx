@@ -12,36 +12,36 @@ import FormOrden from './form/FormOrden';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/modulo-control-de-inventario',
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: '/modulo-control-de-inventario',
         element: <TableProduct />
       },
       {
-        path: 'lista',
+        path: '/modulo-control-de-inventario/lista',
         element: <TableProduct />
       },
       {
-        path: 'producto',
+        path: '/modulo-control-de-inventario/producto',
         element: <FormProduct />
       },
       {
-        path: 'categoria',
+        path: '/modulo-control-de-inventario/categoria',
         element: <FormCategory />
       },
       {
-        path: 'orden',
+        path: '/modulo-control-de-inventario/orden',
         element: <FormOrden />
       },
       {
-        path: 'entrada',
+        path: '/modulo-control-de-inventario/entrada',
         element: <FormEntrada />
       },
     
       {
-        path: 'detalles',
+        path: '/modulo-control-de-inventario/detalles',
         element: <DetailProduct />
       },
     ],
