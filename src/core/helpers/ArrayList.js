@@ -4,7 +4,7 @@ export const arrayList = [
     nombre: 'Lista de productos',
     estado: true,
     icono: 'bi bi-grid-fill',
-    ruta: '/lista',
+    ruta: '/modulo-control-de-inventario/lista',
     rutaDefecto: '/modulo-control-de-inventario'
   },
   {

@@ -9,6 +9,8 @@ import Sidebar from '../sidebar/Sidebar';
 
 function Layout() {
   const location = useLocation();
+
+  console.log(location.pathname);
   
   const [title, setTitle] = useState('');
   const [icon, setIcon] = useState('');
