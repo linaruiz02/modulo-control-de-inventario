@@ -1,45 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './FormProductstyle.css';
 import { Button, Col, Form, FormGroup, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 
+function FormProduct({ tipo, codigo }) {
+  
+  const [categorias, setCategorias] = useState([]);
+  const [arrayProductos, setArrayProductos] = useState([]);
 
-function FormProduct () {
+  const {
+    register,
+    setValue,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
-  const {register,formState: { errors },handleSubmit}= useForm();
-
-  const mostrarAlerta=()=>{
+  const mostrarAlertaGuardar = () => {
     swal({
-      title:'Producto Guardado Exitosamente',
-      icon:'success',
-      button:'Ok'
+      title: 'Producto Guardado Exitosamente',
+      icon: 'success',
+      button: 'Ok',
     });
-  }
-
-  const categoria = JSON.parse(localStorage.getItem('Categorias'));
-  console.log(categoria);
-
-
-  const onSubmit= (object) =>{
-    console.log('este es el Payload',JSON.stringify(object));
-
-    const arrayProductos = JSON.parse(localStorage.getItem('Productos')) || [];
-    const productos = [...arrayProductos, object]; 
+  };
+      
+  useEffect(() => {
+    const categorias = JSON.parse(localStorage.getItem('Categorias'));
+    setCategorias(categorias);
+    const productos = JSON.parse(localStorage.getItem('Productos'));
+    const producto = productos?.find(producto=> producto.codigo === codigo);
+    const {codigo: codigoProducto, nombre, categoria, descripcion, estado} = producto || {}; 
+    setArrayProductos(productos);
+    setValue('codigo', codigoProducto);
+    setValue('nombre', nombre);
+    setValue('categoria', categoria);
+    setValue('descripcion', descripcion);
+    setValue('estado', estado);
+  },[]);
+  
+  const onSubmit = (object) => {
+    console.log('este es el Payload', JSON.stringify(object));
+    
+    if (tipo==='actualizar'){
+      const newArrayProducts = arrayProductos.filter(producto=>producto.codigo !== codigo)
+      console.log(newArrayProducts);
+      const newProducts = [...newArrayProducts, object];
+      localStorage.setItem('Productos', JSON.stringify(newProducts));
+      return;
+    }
+    const productos = [...arrayProductos, object];
     localStorage.setItem('Productos', JSON.stringify(productos));
 
+  };
+  
+  
     
-  }
 
-  return(
+  return (
     <Form style={{ padding: 40 }} onSubmit={handleSubmit(onSubmit)}>
-      <Row className="mb-2" >
+      <Row className="mb-2">
         <Col>
           <Form.Group>
             <Form.Label>Nombre</Form.Label>
-            <Form.Control 
-              {...register('nombre', { required: true })} 
-              aria-invalid={errors.nombre ? 'true' : 'false'} 
+            <Form.Control
+              {...register('nombre', { required: true })}
+              aria-invalid={errors.nombre ? 'true' : 'false'}
               type="text"
               isInvalid={errors.nombre}
             />
@@ -50,20 +76,20 @@ function FormProduct () {
         </Col>
         <Col>
           <Form.Label>Categoría</Form.Label>
-          <Form.Select name='categoria'
-            {...register('categoria', { required: true })} 
-            aria-invalid={errors.categoria ? 'true' : 'false'} 
+          <Form.Select
+            name="categoria"
+            {...register('categoria', { required: true })}
+            aria-invalid={errors.categoria ? 'true' : 'false'}
             type="text"
             isInvalid={errors.categoria}
           >
-            <option className='option'>
-                Selecciona una categoría
-            </option>
-            {categoria !== null && categoria.map(categoria=>(
-              <option key={categoria.id} className='option'>
-                {categoria.nombre}
-              </option>
-            ))}
+            <option className="option">Selecciona una categoría</option>
+            {categorias !== null &&
+              categorias.map((categoria) => (
+                <option key={categoria.nombre} className="option">
+                  {categoria.nombre}
+                </option>
+              ))}
           </Form.Select>
         </Col>
       </Row>
@@ -71,8 +97,9 @@ function FormProduct () {
         <Col>
           <FormGroup>
             <Form.Label>Código</Form.Label>
-            <Form.Control  {...register('codigo' , {required: true})} 
-              aria-invalid={errors.codigo ? 'true' : 'false'} 
+            <Form.Control
+              {...register('codigo', { required: true })}
+              aria-invalid={errors.codigo ? 'true' : 'false'}
               type="text"
               isInvalid={errors.codigo}
             />
@@ -84,8 +111,9 @@ function FormProduct () {
         <Col>
           <FormGroup>
             <Form.Label>Descripción</Form.Label>
-            <Form.Control  {...register('descripcion', { required: true })} 
-              aria-invalid={errors.descripcion ? 'true' : 'false'} 
+            <Form.Control
+              {...register('descripcion', { required: true })}
+              aria-invalid={errors.descripcion ? 'true' : 'false'}
               type="text"
               isInvalid={errors.descripcion}
             />
@@ -99,20 +127,21 @@ function FormProduct () {
         <Col>
           <Form.Label>Estado</Form.Label>
           <Form.Select
-            {...register('estado',{ required: true } )}
-            aria-invalid={errors.estado ? 'true' : 'false'} 
+            {...register('estado', { required: true })}
+            aria-invalid={errors.estado ? 'true' : 'false'}
             type="text"
             isInvalid={errors.estado}
           >
-            <option className='option'>Activo</option>
-            <option className='option'>Inactivo</option>
+            <option className="option">Activo</option>
+            <option className="option">Inactivo</option>
           </Form.Select>
         </Col>
         <Col>
           <FormGroup>
             <Form.Label>Precio</Form.Label>
-            <Form.Control {...register('precio',{ required: true } )}
-              aria-invalid={errors.precio ? 'true' : 'false'} 
+            <Form.Control
+              {...register('precio', { required: true })}
+              aria-invalid={errors.precio ? 'true' : 'false'}
               type="text"
               isInvalid={errors.precio}
             />
@@ -122,14 +151,24 @@ function FormProduct () {
           </FormGroup>
         </Col>
       </Row>
-      <Button className='buttonguardar' variant="primary" type="submit"
-        onClick={()=>mostrarAlerta()}
-      >Guardar</Button>
-      
+      {tipo === 'guardar' && (
+        <Button
+          className="buttonguardar"
+          variant="primary"
+          type="submit"
+          onClick={() => mostrarAlertaGuardar()}> Guardar</Button>
+      )}
+      {tipo === 'actualizar' && (
+        <Button className="buttonguardar"variant="primary" type="submit"
+        >Actualizar</Button>
+      )}
     </Form>
-        
   );
 }
 
+FormProduct.propTypes = {
+  tipo: PropTypes.string,
+  codigo:PropTypes.string
+}
 
 export default FormProduct;

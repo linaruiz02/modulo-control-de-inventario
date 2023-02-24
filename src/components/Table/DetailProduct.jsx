@@ -1,17 +1,28 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Table } from 'react-bootstrap';
 import './detallestyle.css';
+import PropTypes from 'prop-types';
 import HeaderProduct from './HeaderProduct';
+import ModalOpen from '../modal/ModalOpen';
+import FormEntrada from '../form/FormEntrada';
 
-function DetailProduct () {
+function DetailProduct() {
+  const [show, setShow] = useState(false);
+  const [ orden, setOrden ] = useState();
+ 
+  const handleShow = (orden) =>{
+    setShow(true);
+    setOrden(orden);
+  } 
 
+  const handleClose = () => setShow(false);
   const entradas = JSON.parse(localStorage.getItem('Entradas'));
-  return(
+  return (
     <>
-      <HeaderProduct ruta='/entrada'/>
+      <HeaderProduct ruta="/modulo-control-de-inventario/entrada" />
 
       <Table bordered hover>
-        <thead  className='th'>
+        <thead className="th">
           <tr>
             <th>Orden</th>
             <th>Producto</th>
@@ -24,40 +35,38 @@ function DetailProduct () {
           </tr>
         </thead>
         <tbody>
-          { entradas !== null ? entradas.map(entrada => (
-            <tr key={entrada.orden}>
-              <td>
-                {entrada.orden}
-              </td>  
-              <td>
-                {entrada.producto}
-              </td>
-              <td>
-                {entrada.categoria}
-              </td>
-              <td>
-                {entrada.cantidad}
-              </td>
-              <td>
-                {entrada.precio}
-              </td>
-              <td>
-                {entrada.venta}
-              </td>
-              <td>
-                {entrada.descripcion}
-              </td>
+          {entradas !== null ? (
+            entradas.map((entrada) => (
+              <tr key={entrada.orden}>
+                <td>{entrada.orden}</td>
+                <td>{entrada.producto}</td>
+                <td>{entrada.categoria}</td>
+                <td>{entrada.cantidad}</td>
+                <td>{entrada.precio}</td>
+                <td>{entrada.venta}</td>
+                <td>{entrada.descripcion}</td>
+                <td>
+                  <Button className="modalOpen" variant="primary" type="submit" onClick={()=>handleShow(entrada.orden)}>
+                    <i className="bi bi-pen-fill" /> Editar
+                  </Button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={8}>¡No existen entradas!</td> 
             </tr>
-          )): (
-            <tr><td colSpan={7}>¡No existen entradas!</td></tr>
-          )
-          }
+          )}
         </tbody>
       </Table>
-   
+      <ModalOpen show={show} handleClose={handleClose} orden={orden} FormEntrada={<FormEntrada/>}/>
     </>
   );
 }
-
-
+DetailProduct.propTypes = {
+  handleShow: PropTypes.func,
+  handleClose: PropTypes.func,
+  show: PropTypes.bool
+  
+}
 export default DetailProduct;

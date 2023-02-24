@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/modulo-control-de-inventario/producto',
-        element: <FormProduct />
+        element: <FormProduct tipo={'guardar'}/>
       },
       {
         path: '/modulo-control-de-inventario/categoria',

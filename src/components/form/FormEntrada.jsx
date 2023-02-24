@@ -2,10 +2,11 @@ import React from 'react';
 import './FormProductstyle.css';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import showAlert from '../../core/helpers/alerts';
 
 
-function FormEntrada () {
+function FormEntrada ({tipo}) {
 
   const {register,formState: { errors },handleSubmit}= useForm();
 
@@ -127,10 +128,25 @@ function FormEntrada () {
           />
         </Col>
       </Row>
-      <Button variant="primary" type="submit" className='buttong'>Guardar</Button>
+      {tipo === 'guardar' && (
+        <Button
+          className="buttonguardar"
+          variant="primary"
+          type="submit"
+          onClick={() => showAlert()}> Guardar</Button>
+      )}
+      {tipo === 'actualizar' && (
+        <Button className="buttonguardar"variant="primary" type="submit"
+        >Actualizar</Button>
+      )}
+      
     </Form>
   );
 
+}
+FormEntrada.propTypes = {
+  tipo: PropTypes.string,
+  
 }
 
 export default FormEntrada;
