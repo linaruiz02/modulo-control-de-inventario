@@ -1,9 +1,10 @@
 import React from 'react';
 import { Modal, ModalHeader } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import FormProduct from '../form/FormProduct';
 
-function ModalOpen({show, handleClose,codigo, orden }) {
+
+
+function ModalOpen({show, handleClose, Form, titulo}) {
 
   return (
     <Modal
@@ -17,11 +18,11 @@ function ModalOpen({show, handleClose,codigo, orden }) {
     >
       <ModalHeader closeButton >
         <Modal.Title id="contained-modal-title-vcenter">
-          EDITAR PRODUCTO
+          {titulo}
         </Modal.Title>
       </ModalHeader>
       <Modal.Body>
-        <FormProduct tipo={'actualizar'} codigo={codigo} orden={orden}/>
+        {Form}
       </Modal.Body>
     </Modal>
   );
@@ -29,8 +30,8 @@ function ModalOpen({show, handleClose,codigo, orden }) {
 ModalOpen.propTypes = {
   handleClose: PropTypes.func,
   show: PropTypes.bool,
-  codigo:PropTypes.string,
-  orden:PropTypes.string
+  Form:PropTypes.node,
+  titulo:PropTypes.string
 }
 
 export default ModalOpen;

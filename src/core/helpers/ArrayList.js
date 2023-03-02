@@ -42,4 +42,11 @@ export const arrayList = [
     icono: 'bi bi-pencil-square',
     ruta: '/modulo-control-de-inventario/detalles',
   },
+  {
+    id:7,
+    nombre: 'Gifs Prueba',
+    estado: false,
+    icono: 'bi bi-gift-fill',
+    ruta: '/modulo-control-de-inventario/gif'
+  }
 ];

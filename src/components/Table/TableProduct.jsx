@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import HeaderProduct from './HeaderProduct';
-
 import './tablestyle.css';
 import ModalOpen from '../modal/ModalOpen';
 import FormProduct from '../form/FormProduct';
@@ -67,7 +66,12 @@ function TableProduct() {
           )}
         </tbody>
       </Table>
-      <ModalOpen show={show} handleClose={handleClose} codigo={codigo} FormProduct={<FormProduct/>} />
+      <ModalOpen 
+        show={show} 
+        handleClose={handleClose} 
+        Form={<FormProduct tipo='actualizar' codigo={codigo} />} 
+        titulo={'Editar Producto'}
+      />
     </>
   );
 }

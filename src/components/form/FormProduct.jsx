@@ -15,6 +15,7 @@ function FormProduct({ tipo, codigo }) {
     setValue,
     formState: { errors },
     handleSubmit,
+    watch
   } = useForm();
 
   const mostrarAlertaGuardar = () => {
@@ -30,13 +31,14 @@ function FormProduct({ tipo, codigo }) {
     setCategorias(categorias);
     const productos = JSON.parse(localStorage.getItem('Productos'));
     const producto = productos?.find(producto=> producto.codigo === codigo);
-    const {codigo: codigoProducto, nombre, categoria, descripcion, estado} = producto || {}; 
+    const {codigo: codigoProducto, nombre, categoria, descripcion, estado, precio} = producto || {}; 
     setArrayProductos(productos);
     setValue('codigo', codigoProducto);
     setValue('nombre', nombre);
     setValue('categoria', categoria);
     setValue('descripcion', descripcion);
     setValue('estado', estado);
+    setValue('precio', precio);
   },[]);
   
   const onSubmit = (object) => {
@@ -77,6 +79,7 @@ function FormProduct({ tipo, codigo }) {
         <Col>
           <Form.Label>Categoría</Form.Label>
           <Form.Select
+            value={watch('categoria')}
             name="categoria"
             {...register('categoria', { required: true })}
             aria-invalid={errors.categoria ? 'true' : 'false'}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import './detallestyle.css';
 import PropTypes from 'prop-types';
@@ -7,6 +7,9 @@ import ModalOpen from '../modal/ModalOpen';
 import FormEntrada from '../form/FormEntrada';
 
 function DetailProduct() {
+
+  const [entradas, setEntradas] = useState([]);
+
   const [show, setShow] = useState(false);
   const [ orden, setOrden ] = useState();
  
@@ -16,7 +19,14 @@ function DetailProduct() {
   } 
 
   const handleClose = () => setShow(false);
-  const entradas = JSON.parse(localStorage.getItem('Entradas'));
+
+  useEffect (()=>{
+    const entradas = JSON.parse(localStorage.getItem('Entradas'));
+    console.log('hola',entradas);
+    setEntradas(entradas);
+
+  },[])
+ 
   return (
     <>
       <HeaderProduct ruta="/modulo-control-de-inventario/entrada" />
@@ -46,7 +56,10 @@ function DetailProduct() {
                 <td>{entrada.venta}</td>
                 <td>{entrada.descripcion}</td>
                 <td>
-                  <Button className="modalOpen" variant="primary" type="submit" onClick={()=>handleShow(entrada.orden)}>
+                  <Button className="modalOpen" 
+                    variant="primary" 
+                    type="submit" 
+                    onClick={()=>handleShow(entrada.orden)}>
                     <i className="bi bi-pen-fill" /> Editar
                   </Button>
                 </td>
@@ -59,7 +72,13 @@ function DetailProduct() {
           )}
         </tbody>
       </Table>
-      <ModalOpen show={show} handleClose={handleClose} orden={orden} FormEntrada={<FormEntrada/>}/>
+      <ModalOpen 
+        show={show} 
+        handleClose={handleClose} 
+        orden={orden} 
+        Form={<FormEntrada tipo='actualizar' orden={orden}/>} 
+        titulo={'Editar Entrada'}
+      />
     </>
   );
 }
