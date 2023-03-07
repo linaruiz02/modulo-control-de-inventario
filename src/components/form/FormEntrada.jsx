@@ -11,7 +11,7 @@ function FormEntrada({ tipo, orden }) {
   const [ordenes, setOrdenes] = useState([]);
   const [arrayEntradas, setArrayEntradas] = useState([]);
   
-
+  
   const {
     register,
     formState: { errors },
@@ -44,8 +44,8 @@ function FormEntrada({ tipo, orden }) {
     setValue('producto', producto);
     setValue('categoria', categoria);
     setValue('cantidad', cantidad);
-    setValue('precio compra', precioCompra);
-    setValue('precio venta', precioVenta);
+    setValue('Precio Compra', precioCompra);
+    setValue('Precio Venta', precioVenta);
     setValue('descripcion', descripcion);
   
   }, []);

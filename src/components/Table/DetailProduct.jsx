@@ -11,7 +11,10 @@ function DetailProduct() {
   const [entradas, setEntradas] = useState([]);
 
   const [show, setShow] = useState(false);
+
   const [ orden, setOrden ] = useState();
+
+  const [inputValue, setInputValue] = useState('');
  
   const handleShow = (orden) =>{
     setShow(true);
@@ -19,6 +22,8 @@ function DetailProduct() {
   } 
 
   const handleClose = () => setShow(false);
+
+  const busqueda= !inputValue ? entradas: entradas.filter((product)=>product.producto.toLowerCase().includes(inputValue.toLocaleLowerCase()));
 
   useEffect (()=>{
     const entradas = JSON.parse(localStorage.getItem('Entradas'));
@@ -29,7 +34,7 @@ function DetailProduct() {
  
   return (
     <>
-      <HeaderProduct ruta="/modulo-control-de-inventario/entrada" />
+      <HeaderProduct ruta="/modulo-control-de-inventario/entrada" inputValue={inputValue} setInputValue={setInputValue}/>
 
       <Table bordered hover>
         <thead className="th">
@@ -46,7 +51,7 @@ function DetailProduct() {
         </thead>
         <tbody>
           {entradas !== null ? (
-            entradas.map((entrada) => (
+            busqueda.map((entrada) => (
               <tr key={entrada.orden}>
                 <td>{entrada.orden}</td>
                 <td>{entrada.producto}</td>

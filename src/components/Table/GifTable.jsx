@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import getGifs from '../../core/helpers/getGifs';
 import HeaderProduct from './HeaderProduct';
-import PropTypes from 'prop-types';
 import './tablestyle.css';
 
 
@@ -34,7 +33,7 @@ function GifTable () {
             {images.map(({id, title, url})=>(
               <td key={id}>
                 <img src={url} alt={title}  />
-                
+                {title}
               </td>
             ))
             }
@@ -44,7 +43,5 @@ function GifTable () {
     </>
   );
 }
-GifTable.propTypes = {
-  category: PropTypes.func,
-}
+
 export default GifTable;
