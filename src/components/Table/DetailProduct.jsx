@@ -23,12 +23,12 @@ function DetailProduct() {
 
   const handleClose = () => setShow(false);
 
-  const busqueda= !inputValue ? entradas: entradas.filter((product)=>product.producto.toLowerCase().includes(inputValue.toLocaleLowerCase()));
+ 
 
   useEffect (()=>{
     const entradas = JSON.parse(localStorage.getItem('Entradas'));
-    console.log('hola',entradas);
-    setEntradas(entradas);
+    const busqueda= !inputValue ? entradas: entradas.filter((product)=>product.producto.toLowerCase().includes(inputValue.toLocaleLowerCase()));
+    setEntradas(busqueda);
 
   },[])
  
@@ -51,7 +51,7 @@ function DetailProduct() {
         </thead>
         <tbody>
           {entradas !== null ? (
-            busqueda.map((entrada) => (
+            entradas.map((entrada) => (
               <tr key={entrada.orden}>
                 <td>{entrada.orden}</td>
                 <td>{entrada.producto}</td>

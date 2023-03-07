@@ -21,14 +21,12 @@ function TableProduct() {
   } 
   
   const handleClose = () => setShow(false);
-  
-  const busqueda= !inputValue ? productos: productos.filter((product)=>product.nombre.toLowerCase().includes(inputValue.toLocaleLowerCase()));
-  // console.log(busqueda);
 
   useEffect(()=>{
     const productos = JSON.parse(localStorage.getItem('Productos'));
-    setProductos(productos);
-  },[]);
+    const busqueda= !inputValue ? productos: productos.filter((product)=>product.nombre.toLowerCase().includes(inputValue.toLocaleLowerCase()));
+    setProductos(busqueda);
+  },[inputValue]);
 
   return (
     <>
@@ -47,7 +45,7 @@ function TableProduct() {
           </thead>
           <tbody>
             {productos !== null ? (
-              busqueda.map((dato) => (
+              productos.map((dato) => (
                 <tr key={dato.codigo}>
                   <td>{dato.codigo}</td>
                   <td>{dato.nombre}</td>

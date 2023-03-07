@@ -8,11 +8,9 @@ function HeaderProduct({ruta,setInputValue,inputValue}) {
 
   const onInputChange= ({target})=>{
     setInputValue(target.value);
-    // console.log(target.value);
-    
+  
   }
-  // const busqueda= !inputValue ? productos: productos.filter((dato)=>dato.nombre.toLoweCase().incluides(productos.toLowerCase()));
-
+ 
   return (
     <>
       <InputGroup>
