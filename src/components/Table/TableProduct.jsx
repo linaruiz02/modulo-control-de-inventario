@@ -31,7 +31,7 @@ function TableProduct() {
   return (
     <>
       <HeaderProduct ruta="/modulo-control-de-inventario/producto" inputValue={inputValue} setInputValue={setInputValue} />
-      <div >
+      <div className='scrollTable'>
         <Table bordered hover>
           <thead className="th">
             <tr>

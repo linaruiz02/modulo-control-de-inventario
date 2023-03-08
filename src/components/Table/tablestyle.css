@@ -63,6 +63,11 @@ td{
     border-color: var(--bs-table-border-color);
 }
 
+.scrollTable{
+    height: 500px;
+    overflow: scroll;
+}
+
 input{
     border-color: #b8b5ff;
     width: 50%;
