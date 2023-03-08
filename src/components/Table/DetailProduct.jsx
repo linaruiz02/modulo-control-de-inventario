@@ -29,8 +29,7 @@ function DetailProduct() {
     const entradas = JSON.parse(localStorage.getItem('Entradas'));
     const busqueda= !inputValue ? entradas: entradas.filter((product)=>product.producto.toLowerCase().includes(inputValue.toLocaleLowerCase()));
     setEntradas(busqueda);
-
-  },[])
+  },[inputValue]);
  
   return (
     <>
