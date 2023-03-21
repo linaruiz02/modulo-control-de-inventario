@@ -88,7 +88,7 @@ function FormOrden (){
         </Col>
       </Row>
       <Button variant="primary" type="submit" className='buttong'>Guardar</Button>  
-      <Button variant="primary"  className='buttonN' ruta="/modulo-control-de-inventario/entrada">Nueva Entrada</Button>
+      {/* <Button variant="primary"  className='buttonN' >Nueva Entrada</Button> */}
     
     </Form>
           
