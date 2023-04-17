@@ -8,7 +8,7 @@ import FormCategory from './form/FormCategory';
 import DetailProduct from './Table/DetailProduct';
 import FormEntrada from './form/FormEntrada';
 import FormOrden from './form/FormOrden';
-import GifTable from './Table/GifTable';
+
 
 
 const router = createBrowserRouter([
@@ -46,10 +46,6 @@ const router = createBrowserRouter([
         element: <DetailProduct />
       },
 
-      {
-        path: '/modulo-control-de-inventario/gif',
-        element: <GifTable/>
-      }
     ],
   },
 ]);
